@@ -134,16 +134,16 @@ though generation cannot run.
 JavaScript enables it after attaching its event listener. This is progressive
 enhancement, not server-side generation.
 
-## 8. Course prompt documentation does not match the supplied project
+## 8. Original prompt documentation did not match the supplied project
 
 `prompt.md` is a historical generated README template. It mentions separate
 `style.css` and `script.js` files, a `LICENSE.md` link, and placeholder demo and
 clone URLs. The actual `week1` folder contains only `index.html` and `prompt.md`;
 the repository license is named `LICENSE` at the root.
 
-**Fix:** preserve `prompt.md` verbatim for coursework provenance and provide a
-separate accurate README, directory layout, local-run instructions, and links
-to the actual license. No fabricated live demo URL is presented.
+**Fix:** replace `prompt.md` with an implementation brief that describes the
+actual single-file application, corrected behavior, repository layout, tests,
+license, and deployment URL. The README provides the local-run instructions.
 
 ## What is not established as a bug
 
