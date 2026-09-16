@@ -17,7 +17,7 @@ Tired of deciding what to eat for lunch? This web app eliminates the daily dilem
 
 ## ✨ Features
 
-*   **Randomized Selection:** Choose from 12 lunch suggestions on startup or with one click.
+*   **Adaptive Weighted Selection:** All 12 lunches start equally likely; rejecting the displayed lunch halves its weight before the next draw.
 *   **Matching Food Icons:** Every lunch has its own embedded SVG illustration.
 *   **Latest Request Wins:** Rapid clicks cancel older pending results, preventing stale suggestions.
 *   **Accessible Interaction:** Includes a live result announcement, busy state, keyboard focus, sufficient contrast, and reduced-motion support.
@@ -33,10 +33,11 @@ Check out the live application hosted on GitHub Pages:
 
 The core logic is simple:
 1.  The app contains 12 lunch options: Pizza, Sushi, Burger, Salad, Tacos, Ramen, Sandwich, Pasta, Curry, Steak, Soup, and BBQ.
-2.  On page load or when the user clicks **Generate Lunch!**, JavaScript randomly selects an option.
-3.  The app displays a **Thinking...** state for 500 ms.
-4.  If another request starts during that delay, the previous timer is cancelled.
-5.  The final icon and lunch name are displayed together with a short animation.
+2.  On page load, JavaScript selects from an initially uniform weighted distribution.
+3.  When the user clicks **Generate Lunch!**, the visible suggestion's weight is halved before the next draw. The remaining probabilities increase proportionally when the weights are normalized.
+4.  The app displays a **Thinking...** state for 500 ms.
+5.  If another request starts during that delay, the previous timer is cancelled without penalizing the last visible lunch again.
+6.  The final icon and lunch name are displayed together with a short animation.
 
 ## 📁 Project Structure
 
@@ -80,7 +81,7 @@ Want to run this locally or contribute? Follow these steps:
 1.  Go to the live demo page or open `hw1/index.html` locally.
 2.  Wait for the initial random lunch suggestion.
 3.  Click the **Generate Lunch!** button for another suggestion.
-4.  Click again whenever you cannot decide—the latest click always controls the result.
+4.  Click again when a suggestion does not suit you. Its relative weight is halved before regeneration, and the latest click always controls the result.
 
 ## 🤝 Contributing
 
