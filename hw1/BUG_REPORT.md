@@ -141,9 +141,9 @@ enhancement, not server-side generation.
 clone URLs. The actual `week1` folder contains only `index.html` and `prompt.md`;
 the repository license is named `LICENSE` at the root.
 
-**Fix:** replace `prompt.md` with an implementation brief that describes the
-actual single-file application, corrected behavior, repository layout, tests,
-license, and deployment URL. The README provides the local-run instructions.
+**Fix:** retain the original prompt's friendly README-template style while
+correcting its features, file layout, commands, links, license, and deployment
+details to match the implemented repository.
 
 ## What is not established as a bug
 
