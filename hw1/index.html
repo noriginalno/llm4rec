@@ -264,17 +264,46 @@
                 { name: "BBQ", icon: "food-bbq" }
             ];
 
+            // Relative weights start equally. Rejecting a displayed lunch
+            // halves only its weight; dividing by the new total during the
+            // draw increases every other lunch's probability proportionally.
+            const lunchWeights = lunchMenu.map(() => 1);
             let generationTimer = null;
+            let displayedLunchIndex = null;
+
+            function selectWeightedLunchIndex() {
+                const totalWeight = lunchWeights.reduce((sum, weight) => sum + weight, 0);
+                const target = Math.random() * totalWeight;
+                let cumulativeWeight = 0;
+
+                for (let index = 0; index < lunchWeights.length; index++) {
+                    cumulativeWeight += lunchWeights[index];
+                    if (target < cumulativeWeight) return index;
+                }
+
+                // Math.random() is below 1, but keep a defensive fallback for
+                // unusual test doubles or floating-point edge cases.
+                return lunchWeights.length - 1;
+            }
             
             // Function to generate random lunch
             function generateRandomLunch() {
                 // Only the latest click may finish: cancel the previous result.
                 clearTimeout(generationTimer);
+
+                // A click rejects the lunch currently visible to the user.
+                // Clear the reference immediately so additional clicks during
+                // the loading state do not penalize that same lunch repeatedly.
+                if (displayedLunchIndex !== null) {
+                    lunchWeights[displayedLunchIndex] *= 0.5;
+                    displayedLunchIndex = null;
+                }
+
                 // Remove fade-in class if it exists
                 lunchDisplay.classList.remove('fade-in');
                 
-                // Get a random lunch option
-                const randomIndex = Math.floor(Math.random() * lunchMenu.length);
+                // Draw from the updated weighted distribution.
+                const randomIndex = selectWeightedLunchIndex();
                 const selectedLunch = lunchMenu[randomIndex];
                 
                 // Briefly show loading state
@@ -289,6 +318,7 @@
                     foodIcon.classList.remove('loading-icon');
                     foodIconUse.setAttribute('href', `#${selectedLunch.icon}`);
                     foodName.textContent = selectedLunch.name;
+                    displayedLunchIndex = randomIndex;
                     
                     // Add animation class
                     lunchDisplay.classList.add('fade-in');
