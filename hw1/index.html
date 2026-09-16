@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Lunch Menu Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #b52e40;
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+        
+        .description {
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .lunch-display {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 25px 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .food-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: #b52e40;
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            vertical-align: -0.12em;
+        }
+
+        .food-icon .icon { display: block; }
+        .icon-definitions { position: absolute; width: 0; height: 0; overflow: hidden; }
+        .loading-icon { animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .food-name {
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .generate-btn {
+            background-color: #b52e40;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            max-width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .generate-btn:hover {
+            background-color: #942437;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+        }
+        
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .generate-btn:focus-visible {
+            outline: 3px solid #1c4a85;
+            outline-offset: 5px;
+        }
+
+        .generate-btn:disabled { cursor: not-allowed; }
+        
+        .footer {
+            margin-top: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-in, .loading-icon { animation: none; }
+            .lunch-display, .generate-btn { transition: none; }
+            .generate-btn:hover { transform: none; }
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .food-name {
+                font-size: 1.6rem;
+            }
+            
+            .generate-btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Local symbols keep every icon available without a CDN or icon font. -->
+    <svg class="icon-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+        <defs>
+            <symbol id="icon-utensils" viewBox="0 0 64 64">
+                <path d="M12 7v15q0 10 9 10t9-10V7M21 7v49M44 7v27h9M53 7v49M44 7q9 0 9 12v15"/>
+            </symbol>
+            <symbol id="icon-shuffle" viewBox="0 0 64 64">
+                <path d="M7 15h7c15 0 19 34 34 34h9M48 40l9 9-9 9M7 49h7c5 0 9-4 13-10M37 25c4-6 7-10 11-10h9M48 6l9 9-9 9"/>
+            </symbol>
+            <symbol id="icon-question" viewBox="0 0 64 64">
+                <path d="M20 21a12 12 0 1 1 21 8c-5 4-9 4-9 13"/><circle cx="32" cy="52" r="1.5"/>
+            </symbol>
+            <symbol id="icon-loading" viewBox="0 0 64 64">
+                <path d="M53 32a21 21 0 1 1-21-21"/>
+            </symbol>
+            <symbol id="food-pizza" viewBox="0 0 64 64">
+                <path d="M9 13q23-13 46 0L32 58ZM9 13l4 7q19-10 38 0"/>
+                <circle cx="26" cy="29" r="4"/><circle cx="39" cy="24" r="3"/><circle cx="33" cy="43" r="3"/>
+            </symbol>
+            <symbol id="food-sushi" viewBox="0 0 64 64">
+                <ellipse cx="21" cy="32" rx="14" ry="9"/><ellipse cx="21" cy="32" rx="6" ry="4"/>
+                <path d="M7 32v16c0 12 28 12 28 0V32M41 34l13-27M47 39L61 13"/>
+            </symbol>
+            <symbol id="food-burger" viewBox="0 0 64 64">
+                <path d="M9 26a23 19 0 0 1 46 0ZM8 33l9 5 9-5 12 5 9-5 9 5M9 49h46v3q0 6-6 6H15q-6 0-6-6Z"/>
+                <rect x="7" y="40" width="50" height="8" rx="4"/><path d="M22 17h1M32 13h1M41 18h1"/>
+            </symbol>
+            <symbol id="food-salad" viewBox="0 0 64 64">
+                <path d="M7 31h50c-2 17-11 24-25 24S9 48 7 31ZM20 29C4 19 13 9 23 20c-5-19 13-22 14-3 12-14 24-1 10 12M26 31l4-12"/>
+                <circle cx="43" cy="27" r="6"/><path d="M19 57h26"/>
+            </symbol>
+            <symbol id="food-tacos" viewBox="0 0 64 64">
+                <path d="M7 49a25 31 0 0 1 50 0ZM7 49h47q8-4 3-12M11 26q-6-9 5-10 0-10 10-6 6-9 13-1 10-3 12 8 11 1 7 11"/>
+                <path d="M20 36h1M31 27h1M42 38h1M30 43h1"/>
+            </symbol>
+            <symbol id="food-ramen" viewBox="0 0 64 64">
+                <path d="M7 32h50q-4 21-25 21T7 32ZM23 57h18M13 12l44 8M15 6l43 8M25 15c-8 8 8 10 0 17M34 17c-8 6 8 8 0 15M43 19c-8 4 6 7 0 13"/>
+            </symbol>
+            <symbol id="food-sandwich" viewBox="0 0 64 64">
+                <path d="M5 32L33 8l26 24ZM5 32v15h54V32M5 39l8 4 8-4 8 4 8-4 8 4 8-4 6 4M5 52h54M28 24h1M35 29h1"/>
+            </symbol>
+            <symbol id="food-pasta" viewBox="0 0 64 64">
+                <ellipse cx="32" cy="46" rx="26" ry="12"/>
+                <path d="M14 46c0-15 15-19 17-7s-14 12-9 0 20-15 22-1-11 14-10 2 16-11 17 6M26 8h22M26 4v9M32 4v9M38 4v9M48 8h10M30 14v13M36 14v12"/>
+            </symbol>
+            <symbol id="food-curry" viewBox="0 0 64 64">
+                <ellipse cx="32" cy="42" rx="27" ry="16"/>
+                <path d="M12 41c1-17 25-22 26 0ZM38 32c16-4 22 17 7 18H29M18 32l2 2M26 30l2 2M30 36l2 2"/>
+                <rect x="42" y="35" width="5" height="5" rx="1"/><rect x="36" y="44" width="5" height="4" rx="1"/>
+            </symbol>
+            <symbol id="food-steak" viewBox="0 0 64 64">
+                <path d="M10 27C13 9 43 3 54 17s-6 21-10 31-24 15-33 4-4-17-1-25Z"/>
+                <path d="M16 28c4-13 26-17 32-8s-7 17-11 25-18 11-22 3-2-14 1-20Z"/>
+                <path d="M25 22l9 19M20 32l7 15M33 19l8 13"/>
+            </symbol>
+            <symbol id="food-soup" viewBox="0 0 64 64">
+                <path d="M6 33h42q-2 21-21 21T6 33ZM18 57h18M18 24c-8-7 8-10 0-17M30 24c-8-7 8-10 0-17M55 31v25"/>
+                <ellipse cx="55" cy="22" rx="5" ry="9"/>
+            </symbol>
+            <symbol id="food-bbq" viewBox="0 0 64 64">
+                <ellipse cx="32" cy="29" rx="24" ry="8"/>
+                <path d="M8 29q0 18 24 18t24-18M22 46l-7 13M42 46l7 13M20 53h24M17 26v6M27 23v12M37 23v12M47 26v6M22 16c-7-5 7-7 0-12M39 16c-7-5 7-7 0-12"/>
+            </symbol>
+        </defs>
+    </svg>
+    <main class="container">
+        <h1><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-utensils"/></svg> Random Lunch Generator</h1>
+        <p class="description">Struggling to decide what to eat? Let us choose for you with just one click!</p>
+        
+        <div class="lunch-display" role="status" aria-live="polite" aria-atomic="true" aria-busy="false">
+            <div class="food-icon" aria-hidden="true"><svg class="icon" focusable="false"><use href="#icon-question"/></svg></div>
+            <div class="food-name">What's for lunch?</div>
+        </div>
+        
+        <button class="generate-btn" id="generateBtn" type="button" disabled>
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-shuffle"/></svg> Generate Lunch!
+        </button>
+        
+        <p class="footer">Click the button again if you can't decide!</p>
+        <noscript><p>This generator needs JavaScript. Enable it in your browser and reload this page.</p></noscript>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generateBtn');
+            const foodIcon = document.querySelector('.food-icon .icon');
+            const foodIconUse = foodIcon.querySelector('use');
+            const foodName = document.querySelector('.food-name');
+            const lunchDisplay = document.querySelector('.lunch-display');
+            
+            // Each dish references a matching SVG defined in this document.
+            const lunchMenu = [
+                { name: "Pizza", icon: "food-pizza" },
+                { name: "Sushi", icon: "food-sushi" },
+                { name: "Burger", icon: "food-burger" },
+                { name: "Salad", icon: "food-salad" },
+                { name: "Tacos", icon: "food-tacos" },
+                { name: "Ramen", icon: "food-ramen" },
+                { name: "Sandwich", icon: "food-sandwich" },
+                { name: "Pasta", icon: "food-pasta" },
+                { name: "Curry", icon: "food-curry" },
+                { name: "Steak", icon: "food-steak" },
+                { name: "Soup", icon: "food-soup" },
+                { name: "BBQ", icon: "food-bbq" }
+            ];
+
+            let generationTimer = null;
+            
+            // Function to generate random lunch
+            function generateRandomLunch() {
+                // Only the latest click may finish: cancel the previous result.
+                clearTimeout(generationTimer);
+                // Remove fade-in class if it exists
+                lunchDisplay.classList.remove('fade-in');
+                
+                // Get a random lunch option
+                const randomIndex = Math.floor(Math.random() * lunchMenu.length);
+                const selectedLunch = lunchMenu[randomIndex];
+                
+                // Briefly show loading state
+                lunchDisplay.setAttribute('aria-busy', 'true');
+                foodIconUse.setAttribute('href', '#icon-loading');
+                foodIcon.classList.add('loading-icon');
+                foodName.textContent = "Thinking...";
+                
+                // After a short delay, show the selected lunch
+                generationTimer = setTimeout(() => {
+                    generationTimer = null;
+                    foodIcon.classList.remove('loading-icon');
+                    foodIconUse.setAttribute('href', `#${selectedLunch.icon}`);
+                    foodName.textContent = selectedLunch.name;
+                    
+                    // Add animation class
+                    lunchDisplay.classList.add('fade-in');
+                    lunchDisplay.setAttribute('aria-busy', 'false');
+                }, 500);
+            }
+            
+            // Add click event to button
+            generateBtn.addEventListener('click', generateRandomLunch);
+            generateBtn.disabled = false;
+            
+            // Generate a random lunch on page load
+            generateRandomLunch();
+        });
+    </script>
+</body>
+</html>
