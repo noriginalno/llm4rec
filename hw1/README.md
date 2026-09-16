@@ -29,7 +29,7 @@ reproduction steps, evidence, and validation limits.
 | File | Purpose |
 | --- | --- |
 | `index.html` | Corrected application, styles, icons, and script |
-| `prompt.md` | Original course prompt, preserved verbatim |
+| `prompt.md` | Implementation requirements matching this repository |
 | `upstream/index.html` | Original application, preserved for comparison |
 | `tests/generator.test.cjs` | Deterministic tests of the actual inline script |
 | `BUG_REPORT.md` | Findings, fixes, evidence, and remaining checks |
