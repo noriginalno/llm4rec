@@ -1,0 +1,54 @@
+{
+  "food_count": 12,
+  "foods_by_id": {
+    "0": "Pizza",
+    "1": "Sushi",
+    "2": "Burger",
+    "3": "Salad",
+    "4": "Tacos",
+    "5": "Ramen",
+    "6": "Sandwich",
+    "7": "Pasta",
+    "8": "Curry",
+    "9": "Steak",
+    "10": "Soup",
+    "11": "BBQ"
+  },
+  "food_codes": {
+    "0": "Pizza",
+    "1": "Sushi",
+    "2": "Burger",
+    "3": "Salad",
+    "4": "Tacos",
+    "5": "Ramen",
+    "6": "Sandwich",
+    "7": "Pasta",
+    "8": "Curry",
+    "9": "Steak",
+    "A": "Soup",
+    "B": "BBQ"
+  },
+  "sessions_per_algorithm": 10000,
+  "total_sessions": 20000,
+  "maximum_allowed_sequence_length": 13,
+  "algorithms": {
+    "uniform": {
+      "seed": 20260916,
+      "observed_mean_x": 5.0349,
+      "exact_mean_x": 5.0361,
+      "observed_median_x": 5,
+      "observed_p90_x": 8,
+      "observed_min_x": 2,
+      "observed_max_x": 12
+    },
+    "adaptive": {
+      "seed": 20260917,
+      "observed_mean_x": 6.2295,
+      "exact_mean_x": 6.2042,
+      "observed_median_x": 6,
+      "observed_p90_x": 9,
+      "observed_min_x": 2,
+      "observed_max_x": 13
+    }
+  }
+}
