@@ -56,8 +56,8 @@ three of the four selected scheduling checks.
 
 ## GitHub Pages
 
-After uploading this repository, enable Pages from `main` and the repository
-root. The application is under `/hw1/`. No live deployment is claimed here.
+GitHub Pages is published from `master` and the repository root. The application
+is available at <https://noriginalno.github.io/llm4rec/hw1/>.
 
 ## Attribution
 
