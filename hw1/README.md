@@ -1,9 +1,12 @@
 # Homework 1 — Random Lunch Menu Generator
 
-The page randomly chooses one of 12 lunches on startup and when you press
-**Generate Lunch!**. A 500 ms loading state precedes each result. When another
-click arrives during that delay, it replaces the pending choice and restarts
-the delay. Only the latest choice is displayed.
+The page initially gives all 12 lunches equal weight. Pressing **Generate
+Lunch!** rejects the displayed suggestion: its weight is halved before the next
+weighted draw, while the other probabilities increase proportionally through
+normalization. A 500 ms loading state precedes each result. When another click
+arrives during that delay, it replaces the pending choice and restarts the
+delay. Only the latest choice is displayed, and the previously visible lunch is
+not penalized again while the page is already loading.
 
 ## Run
 
@@ -14,6 +17,8 @@ external stylesheets, API requests, or build dependencies.
 ## Changes
 
 - Replaced missing and misleading Font Awesome icons with 12 matching SVGs.
+- Added rejection-aware weighted sampling: clicking again halves the displayed
+  lunch's relative weight before regeneration.
 - Cancelled superseded timers, including the timer started on page load.
 - Added a polite result announcement and a busy state for assistive technology.
 - Increased text contrast, added a visible keyboard focus style, and respected
@@ -51,7 +56,7 @@ LUNCH_HTML=hw1/upstream/index.html node --test --test-name-pattern='page load co
 
 The tests execute the real inline script with a minimal DOM and a virtual
 clock. They do not substitute for browser rendering, keyboard, or screen-reader
-testing. The corrected application passes all six tests; the original fails
+testing. The corrected application passes all nine tests; the original fails
 three of the four selected scheduling checks.
 
 ## GitHub Pages
