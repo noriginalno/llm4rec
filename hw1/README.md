@@ -37,6 +37,7 @@ reproduction steps, evidence, and validation limits.
 | `prompt.md` | Original-style project description updated for this repository |
 | `upstream/index.html` | Original application, preserved for comparison |
 | `tests/generator.test.cjs` | Deterministic tests of the actual inline script |
+| `experiments/first_repeat/` | Reproducible 10,000-session distribution comparison |
 | `BUG_REPORT.md` | Findings, fixes, evidence, and remaining checks |
 | `../LICENSE` | Original MIT license |
 
@@ -58,6 +59,13 @@ The tests execute the real inline script with a minimal DOM and a virtual
 clock. They do not substitute for browser rendering, keyboard, or screen-reader
 testing. The corrected application passes all nine tests; the original fails
 three of the four selected scheduling checks.
+
+## Distribution experiment
+
+The reproducible experiment in [`experiments/first_repeat`](experiments/first_repeat/)
+collects 10,000 first-repeat sequences for each algorithm, saves every session,
+aggregates `X` into observed `Y` counts, checks those counts against exact
+probabilities, and generates an SVG comparison plot.
 
 ## GitHub Pages
 
