@@ -8,7 +8,7 @@ is required.
 
 - [Homework README](hw1/README.md)
 - [Bug report](hw1/BUG_REPORT.md)
-- [Implementation brief](hw1/prompt.md)
+- [Project description](hw1/prompt.md)
 
 The application is in `hw1/`. Once GitHub Pages is enabled from the `master`
 branch and repository root, open
