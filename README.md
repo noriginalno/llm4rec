@@ -4,7 +4,8 @@
 
 Open [hw1/index.html](hw1/index.html) in a browser. The application is a single,
 self-contained HTML file; no installation, build, API key, or network connection
-is required.
+is required. All lunches begin equally weighted; rejecting the displayed result
+halves its weight before the next recommendation.
 
 - [Homework README](hw1/README.md)
 - [Bug report](hw1/BUG_REPORT.md)
