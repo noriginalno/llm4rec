@@ -61,6 +61,7 @@ function app() {
     return {
         button, name, display, use,
         choose: (index) => { random = (index + 0.5) / 12; button.click(); },
+        clickAt: (randomValue) => { random = randomValue; button.click(); },
         pending: () => timers.size,
         tick: (duration) => {
             const until = now + duration;
@@ -129,8 +130,8 @@ test('a burst of 100 clicks leaves one pending result', () => {
 test('all 12 outcomes use their matching, nonempty local SVG symbol', () => {
     const names = ['Pizza', 'Sushi', 'Burger', 'Salad', 'Tacos', 'Ramen',
         'Sandwich', 'Pasta', 'Curry', 'Steak', 'Soup', 'BBQ'];
-    const page = app();
     names.forEach((name, index) => {
+        const page = app();
         page.choose(index);
         assert.equal(page.display.getAttribute('aria-busy'), 'true');
         page.tick(500);
@@ -145,11 +146,52 @@ test('all 12 outcomes use their matching, nonempty local SVG symbol', () => {
 test('drawing the same lunch twice completes normally', () => {
     const page = app();
     for (let i = 0; i < 2; i++) {
-        page.choose(11);
+        page.clickAt(0.999);
         page.tick(500);
         assert.equal(page.name.textContent, 'BBQ');
         assert.equal(page.display.getAttribute('aria-busy'), 'false');
         assert.equal(page.button.disabled, false);
         assert.equal(page.pending(), 0);
     }
+});
+
+test('rejecting a displayed lunch halves its probability before regeneration', () => {
+    const page = app();
+    page.tick(500);
+    assert.equal(page.name.textContent, 'Pizza');
+
+    // At 0.06, a uniform draw would still be Pizza (probability 1/12).
+    // After Pizza is halved, its probability is 0.5/11.5, so this is Sushi.
+    page.clickAt(0.06);
+    page.tick(500);
+    assert.equal(page.name.textContent, 'Sushi');
+});
+
+test('rejecting the same displayed lunch twice halves its weight twice', () => {
+    const page = app();
+    page.tick(500);
+    assert.equal(page.name.textContent, 'Pizza');
+
+    page.clickAt(0);
+    page.tick(500);
+    assert.equal(page.name.textContent, 'Pizza');
+
+    // Pizza's weight is now 0.25 and the total is 11.25. This draw falls
+    // beyond Pizza; it would still be Pizza after only one halving.
+    page.clickAt(0.03);
+    page.tick(500);
+    assert.equal(page.name.textContent, 'Sushi');
+});
+
+test('clicks during loading do not reject the last visible lunch repeatedly', () => {
+    const page = app();
+    page.tick(500);
+    assert.equal(page.name.textContent, 'Pizza');
+
+    page.clickAt(0);
+    page.tick(400);
+    page.clickAt(0.04);
+    page.tick(500);
+    assert.equal(page.name.textContent, 'Pizza');
+    assert.equal(page.pending(), 0);
 });
