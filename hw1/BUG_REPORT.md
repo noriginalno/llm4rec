@@ -145,11 +145,30 @@ the repository license is named `LICENSE` at the root.
 correcting its features, file layout, commands, links, license, and deployment
 details to match the implemented repository.
 
+## 9. Rejection-aware weighted generation
+
+The original chooser samples every lunch uniformly and does not learn from a
+rejected suggestion. The revised generator keeps one positive weight per lunch,
+initially `1`. When the user clicks **Generate Lunch!** while a result is
+visible, that lunch's weight is halved before the next selection:
+
+`rejectedWeight = rejectedWeight / 2`
+
+Each draw uses `weight / sumOfAllWeights` as the effective probability. Thus the
+rejected lunch becomes half as likely relative to every unchanged lunch, while
+all other normalized probabilities increase proportionally. The lunch remains
+eligible, and repeated visible rejections halve its weight again.
+
+The visible-result reference is cleared as soon as loading begins. Therefore a
+second click during **Thinking...** cancels and replaces the pending result but
+does not penalize the last visible lunch a second time. This preserves the
+latest-request-only scheduling behavior.
+
 ## What is not established as a bug
 
-- An immediate repeated lunch is valid random sampling: each of 12 options
-  has probability 1/12 on each draw. No non-repetition rule was requested.
-- The page is a random chooser, not a personalized or LLM-driven recommender.
+- An immediate repeated lunch remains possible. Rejection halves its weight; it
+  does not ban the lunch from future draws.
+- The page is an adaptive weighted chooser, not an LLM-driven recommender.
 - `innerHTML` only uses hardcoded data in the original; this review does not
   identify an exploitable injection path. The revised page updates an existing
   SVG reference and uses `textContent` for labels.
@@ -160,9 +179,10 @@ details to match the implemented repository.
 
 ## Validation and limits
 
-- Six deterministic tests pass against the corrected application's actual
+- Nine deterministic tests pass against the corrected application's actual
   inline JavaScript: startup, click during startup, near-boundary rapid clicks,
-  a 100-click burst, all 12 icon/name pairs and busy states, and repeated draws.
+  a 100-click burst, all 12 icon/name pairs and busy states, repeated draws,
+  one and two successive weight halvings, and loading-state penalty behavior.
 - The original passes the ordinary-startup test and fails all three selected
   overlap/burst regression checks, demonstrating the tests detect its bug.
 - Checked the exact Font Awesome 6.4.0 CSS for all 12 original class names.
