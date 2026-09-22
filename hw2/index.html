@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore two ways to find your next movie with MovieLens genres and cosine similarity. A small, transparent recommendation experiment.">
+  <meta name="theme-color" content="#126459">
+  <title>Content-Based Movie Recommender</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#movie-search">Skip to movie selection</a>
+  <div class="page-shell" data-movie-app>
+    <header class="masthead">
+      <a class="brand" href="./" aria-label="Reel Alike home"><span aria-hidden="true" class="brand-icon">◉</span> REEL ALIKE</a>
+      <span class="edition">A MovieLens discovery lab</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Familiar tastes. New possibilities.</p>
+        <h1 id="page-title">Content-Based<br><span>Movie Recommender</span></h1>
+        <p class="intro">Start with a few movies you love. Discover what follows from one favorite, or from your taste as a whole.</p>
+        <div class="hero-facts" aria-label="How this works"><span>18 genres</span><span>Two perspectives</span><span>No account needed</span></div>
+      </section>
+
+      <div id="load-status" class="status-banner" role="status" aria-live="polite">Loading the MovieLens catalog and rating counts…</div>
+      <div id="load-error" class="error-banner" role="alert" hidden>
+        <p id="error-message"></p>
+        <button id="retry-load" type="button">Try again</button>
+      </div>
+      <noscript><p class="error-banner">JavaScript is required to load the catalog and calculate recommendations.</p></noscript>
+
+      <section class="workspace panel" aria-labelledby="history-heading" aria-busy="true" id="workspace">
+        <div class="section-heading">
+          <div><p class="eyebrow">01 / Build your taste</p><h2 id="history-heading">Your movie shelf</h2></div>
+          <button id="try-example" class="button-secondary" type="button" disabled>Try an example</button>
+        </div>
+        <p class="helper">Add movies you’ve watched and liked. Select a radio button to make one movie active.</p>
+        <form id="movie-form" class="movie-form">
+          <div class="field search-field">
+            <label for="movie-search">Find a title</label>
+            <input id="movie-search" type="search" placeholder="Search the catalog…" autocomplete="off" aria-describedby="search-count" disabled>
+          </div>
+          <div class="field select-field">
+            <label for="movie-select">Choose a movie</label>
+            <select id="movie-select" disabled><option value="">Loading movies…</option></select>
+          </div>
+          <button id="add-movie" type="submit" disabled>Add to shelf <span aria-hidden="true">＋</span></button>
+        </form>
+        <p id="search-count" class="small muted" role="status"></p>
+        <div class="shelf-heading"><h3>Liked movies <span id="selected-count" class="count-badge">0</span></h3><button id="clear-history" class="button-text" type="button" disabled>Clear shelf</button></div>
+        <p id="shelf-empty" class="empty-shelf">Your shelf is empty. Add one movie to begin; add a few to combine your preferences.</p>
+        <fieldset id="shelf-fieldset" hidden>
+          <legend class="sr-only">Choose the active movie for item-to-item recommendations</legend>
+          <div id="selected-movies" class="selected-movies"></div>
+        </fieldset>
+        <div id="profile-summary" class="profile-summary" hidden><span class="small label">Your genre mix</span><div id="profile-genres" class="genre-mix"></div></div>
+      </section>
+
+      <section class="discovery" aria-labelledby="discovery-heading">
+        <div class="section-heading discovery-heading"><div><p class="eyebrow">02 / Compare your next watch</p><h2 id="discovery-heading">One shelf. Two perspectives.</h2></div><span class="small muted">Top 5 · cosine similarity</span></div>
+        <p id="recommendation-status" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+        <div class="recommendation-grid">
+          <section class="recommendation-panel panel" aria-labelledby="item-heading">
+            <div class="list-header"><span class="mode-icon" aria-hidden="true">01</span><div><h3 id="item-heading">Item-to-item</h3><p>More like your active movie</p></div></div>
+            <p id="item-context" class="list-context">Choose a movie to set the direction.</p>
+            <p id="item-empty" class="list-empty">Your next watch starts with a favorite.</p>
+            <ol id="item-results" class="recommendation-list"></ol>
+          </section>
+          <section class="recommendation-panel panel profile-panel" aria-labelledby="profile-heading">
+            <div class="list-header"><span class="mode-icon" aria-hidden="true">02</span><div><h3 id="profile-heading">Profile-based</h3><p>The bigger picture of your taste</p></div></div>
+            <p id="profile-context" class="list-context">Add a few favorites to blend their genres.</p>
+            <p id="profile-empty" class="list-empty">A little more of you in every recommendation.</p>
+            <ol id="profile-results" class="recommendation-list"></ol>
+          </section>
+        </div>
+        <p id="overlap-summary" class="overlap-summary" hidden></p>
+      </section>
+
+      <details class="method-note panel">
+        <summary>Behind the recommendations</summary>
+        <div class="method-content">
+          <p>Each movie is an 18-dimensional binary genre vector. Item-to-item compares candidates with your active movie. Profile-based first averages the <strong>original, unnormalized vectors</strong> of every movie on your shelf, then compares candidates with that average.</p>
+          <p>Both lists use cosine similarity: the dot product divided by the two vector lengths. The score is a genre match, <strong>not a probability you’ll enjoy the movie</strong>. With one selection the lists are identical.</p>
+          <p>All selected movies are excluded from both lists. Scores are rounded to 12 decimal places for tie-breaking, then sorted by ascending MovieLens ID. Only positive matches are displayed; missing genre information cannot produce a match. Rating counts show popularity and never affect ranking.</p>
+          <p>This is a small historical catalog from 1997–1998, with coarse genre labels rather than plot, cast, or current releases. Your shelf stays in this tab and is not sent anywhere.</p>
+          <a href="ANALYSIS.md">Read the reproducible comparison →</a>
+        </div>
+      </details>
+    </main>
+
+    <footer><span>Made for curious movie nights.</span><span><a href="https://grouplens.org/datasets/movielens/100k/">MovieLens 100K / GroupLens</a> · <a href="README.md">Project notes</a></span></footer>
+  </div>
+</body>
+</html>

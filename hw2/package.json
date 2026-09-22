@@ -1,0 +1,12 @@
+{
+  "name": "movielens-genre-recommender",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "experiment": "node experiments/compare.js",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "engines": { "node": ">=20" },
+  "devDependencies": { "playwright": "1.63.0" }
+}
