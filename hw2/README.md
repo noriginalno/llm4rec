@@ -5,8 +5,7 @@ genre-based Top-5 recommenders on MovieLens 100K. No backend, build step, API ke
 account, external font, or runtime dependency is needed.
 
 [Service entry point](index.html) · [Analysis](ANALYSIS.md) ·
-[Computed comparison](results/comparison.md) · [Verification record](results/verification.md) ·
-[LaTeX report and PDF](report/README.md)
+[Computed comparison](results/comparison.md) · [Verification record](results/verification.md)
 
 GitHub Pages URL after deployment: <https://noriginalno.github.io/llm4rec/hw2/>.
 
