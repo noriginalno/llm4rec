@@ -71,7 +71,11 @@ byte-identical to `submissions/submission.csv`, SHA-256
   remain uncertain. Historical8-vs-final20-week training mismatch is disclosed.
 - User explicitly deferred personal verification; no agent check substitutes.
 - Genuine private-score screenshot and final report/export/package inspection.
-- GitHub publication is approved and being prepared; LMS submission is separate.
+- GitHub publication is confirmed on `feat/sweettv-midterm` (implementation
+  commit `4ea52e4d91aa21f13673cc14424aa751ad5557dc`). The public scored CSV was
+  fetched and byte-checked against the authenticated Kaggle download. Raw data,
+  caches, credentials, report drafts and native exports were excluded. LMS
+  submission remains separate and unconfirmed.
 
 No GPU was needed. Kaggle upload/scoring is confirmed, not merely local presence.
 CPU execution is verified; Apple Accelerate thread counts are not claimed known.
