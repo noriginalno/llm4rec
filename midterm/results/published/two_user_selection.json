@@ -1,0 +1,15 @@
+{
+  "selection": "training-only middle-activity pool; minimum/maximum top-program share; string-ID ties",
+  "users": {
+    "18417531283109304442": {
+      "qualifying_broadcasts": 32.0,
+      "distinct_programs": 30,
+      "top_program_share": 0.0625
+    },
+    "5364378838289882469": {
+      "qualifying_broadcasts": 29.0,
+      "distinct_programs": 5,
+      "top_program_share": 0.8275862336158752
+    }
+  }
+}
