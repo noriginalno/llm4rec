@@ -1,0 +1,222 @@
+{
+  "official_data_acquisition": "Authenticated official Kaggle CLI; unchanged raw bytes checked against acquisition SHA-256 manifest",
+  "source_file_hashes": {
+    "submission.csv": "d8c209dce3c7c9d815d8e2a6226e1be63052ee7afa7e8ba8b75dc2f703967a02",
+    "export_arh_11-20-final.csv": "7888aa00c20db3db23f95000c721eccf2878e5f58bf5383bb25b99f078b1033c",
+    "export_arh_21-30-final.csv": "bdc9fa9850239aaed608bece9cdb200011e690300470fe85b980457d8c0cb2d4",
+    "export_arh_31-42-final.csv": "5cc01f4619bd94886d83744f00bbc15cc5fa23384d297244a7dc2207450c4088",
+    "dataset11-30.csv": "8c9e5f058157041e5c33f13e64dc1625a5177cc6d5e434ba18cd8a69afafb53b"
+  },
+  "logs": {
+    "rows": 5821987,
+    "missing_user_rows": 0,
+    "missing_channel_rows": 0,
+    "distinct_users": 4914,
+    "distinct_channels": 202,
+    "min_start_wall": "2020-03-09 00:00:02",
+    "max_start_wall": "2020-07-26 23:58:42",
+    "min_stop_wall": "2020-03-09 00:01:26",
+    "max_stop_wall": "2020-07-26 23:59:58",
+    "unparsed_start_rows": 0,
+    "unparsed_stop_rows": 0,
+    "zero_length_interval_rows": 0,
+    "negative_interval_rows": 0,
+    "invalid_interval_rows": 0,
+    "missing_duration_rows": 0,
+    "invalid_or_nonintegral_duration_rows": 0,
+    "zero_duration_rows": 0,
+    "negative_duration_rows": 0,
+    "min_raw_duration": 61,
+    "max_raw_duration": 342145,
+    "min_endpoint_seconds": 61,
+    "max_endpoint_seconds": 342145,
+    "duration_endpoint_mismatch_rows": 117,
+    "outer_whitespace_user_rows": 0,
+    "duration_diagnostic_policy": "Compare duraton to stop-start in naive wall-clock seconds; do not repair/rescale endpoints"
+  },
+  "source_clock_policy": "Both sources supply naive wall-clock datetimes. UTC is an explicit common-clock numeric anchor, not evidence that original timestamps were recorded in UTC. No inferred Kyiv offset or DST conversion is applied.",
+  "qualifying_events": 611760,
+  "positive_airings": 381892,
+  "discarded_zero_id_rows": 3062115,
+  "protocol": {
+    "source_reconciliation": "Strict source scans confirm log wall-clock dates 2020-03-09 through 2020-07-26; EPG files cover ISO weeks 11-20, 21-30 and 31-42 with boundary-crossing airings. Each fold applies its documented fully-contained label policy.",
+    "clock_policy": "Timezone-unknown common naive wall clock, anchored to UTC only for integer coordinates; these are not claimed observed UTC timestamps.",
+    "development": {
+      "train_end": 1586131200,
+      "forecast_start": 1586131200,
+      "forecast_end": 1588550400
+    },
+    "primary": {
+      "train_end": 1588550400,
+      "forecast_start": 1588550400,
+      "forecast_end": 1595808000
+    },
+    "final": {
+      "train_end": 1595808000,
+      "forecast_start": 1595808000,
+      "forecast_end": 1603065600
+    }
+  },
+  "primary_users": 1199,
+  "all_template_users": 1260,
+  "validation_methods": [
+    {
+      "method": "popularity",
+      "primary_map_at_5": 0.32314984709480127,
+      "all_template_map_at_5": 0.3124656084656085,
+      "reverse_id_label_tie_map_at_5": 0.2854017236586044,
+      "unseen_in_user_training_slots": 2496,
+      "slots": 5995,
+      "unique_recommended_ids": 5,
+      "mean_training_program_popularity": 18723.6,
+      "fit_plus_score_seconds_including_hybrid_constituents": 0.025291712110629305,
+      "fallback": {
+        "fallback_positions": 0,
+        "fallback_users": 0,
+        "no_evidence_users": 0
+      }
+    },
+    {
+      "method": "repeat",
+      "primary_map_at_5": 0.3869502363080345,
+      "all_template_map_at_5": 0.37377579365079366,
+      "reverse_id_label_tie_map_at_5": 0.35571587433972757,
+      "unseen_in_user_training_slots": 194,
+      "slots": 5995,
+      "unique_recommended_ids": 283,
+      "mean_training_program_popularity": 11125.103252710593,
+      "fit_plus_score_seconds_including_hybrid_constituents": 0.10171124781481922,
+      "fallback": {
+        "fallback_positions": 287,
+        "fallback_users": 95,
+        "no_evidence_users": 23
+      }
+    },
+    {
+      "method": "cbf",
+      "primary_map_at_5": 0.31731998887962193,
+      "all_template_map_at_5": 0.3073269400352734,
+      "reverse_id_label_tie_map_at_5": 0.3010758965804837,
+      "unseen_in_user_training_slots": 1672,
+      "slots": 5995,
+      "unique_recommended_ids": 390,
+      "mean_training_program_popularity": 9203.578482068391,
+      "fit_plus_score_seconds_including_hybrid_constituents": 1.0827512149116956,
+      "fallback": {
+        "fallback_positions": 105,
+        "fallback_users": 21,
+        "no_evidence_users": 21
+      }
+    },
+    {
+      "method": "association",
+      "primary_map_at_5": 0.27891298304142337,
+      "all_template_map_at_5": 0.2699889770723104,
+      "reverse_id_label_tie_map_at_5": 0.2563914373088685,
+      "unseen_in_user_training_slots": 2075,
+      "slots": 5995,
+      "unique_recommended_ids": 64,
+      "mean_training_program_popularity": 11823.50291909925,
+      "fit_plus_score_seconds_including_hybrid_constituents": 0.18917308381060138,
+      "fallback": {
+        "fallback_positions": 137,
+        "fallback_users": 30,
+        "no_evidence_users": 25
+      }
+    },
+    {
+      "method": "mf",
+      "primary_map_at_5": 0.20175979983319434,
+      "all_template_map_at_5": 0.1971706349206349,
+      "reverse_id_label_tie_map_at_5": 0.17561857103141507,
+      "unseen_in_user_training_slots": 1965,
+      "slots": 5995,
+      "unique_recommended_ids": 180,
+      "mean_training_program_popularity": 8707.284236864054,
+      "fit_plus_score_seconds_including_hybrid_constituents": 0.2790183801553212,
+      "fallback": {
+        "fallback_positions": 105,
+        "fallback_users": 21,
+        "no_evidence_users": 21
+      }
+    },
+    {
+      "method": "ppr",
+      "primary_map_at_5": 0.39517931609674734,
+      "all_template_map_at_5": 0.3819349647266314,
+      "reverse_id_label_tie_map_at_5": 0.35896024464831805,
+      "unseen_in_user_training_slots": 1376,
+      "slots": 5995,
+      "unique_recommended_ids": 146,
+      "mean_training_program_popularity": 17246.4612176814,
+      "fit_plus_score_seconds_including_hybrid_constituents": 10.652419580117567,
+      "fallback": {
+        "fallback_positions": 105,
+        "fallback_users": 21,
+        "no_evidence_users": 21
+      }
+    },
+    {
+      "method": "hybrid_balanced",
+      "primary_map_at_5": 0.4003947734222964,
+      "all_template_map_at_5": 0.3867557319223986,
+      "reverse_id_label_tie_map_at_5": 0.3696524881845983,
+      "unseen_in_user_training_slots": 199,
+      "slots": 5995,
+      "unique_recommended_ids": 230,
+      "mean_training_program_popularity": 11748.304420350292,
+      "fit_plus_score_seconds_including_hybrid_constituents": 18.693934720533434,
+      "fallback": {
+        "fallback_positions": 105,
+        "fallback_users": 21,
+        "no_evidence_users": 21
+      }
+    }
+  ],
+  "hybrid_vs_ppr": {
+    "mean_difference": 0.0052154573255490675,
+    "bootstrap_95_percent_interval": [
+      -0.0029941618015012507,
+      0.013319919377258826
+    ],
+    "wins": 458,
+    "losses": 420,
+    "ties": 321,
+    "seed": 20261101,
+    "resamples": 2000,
+    "scope": "Paired users, fitted models and this period fixed; not independent test, temporal uncertainty or causal impact"
+  },
+  "boundary_tie_users": 714,
+  "label_tie_policy_note": "Reverse numeric-ID tie policy changes relevant membership only; predictions and user cohort remain fixed. Neither tie policy is confirmed as organizer policy.",
+  "time_scope": "Fit and model scoring kernels plus fusion; initialization, shared ranking/export/ETL excluded. Not online latency or total production cost.",
+  "unit_tests": {
+    "tests": 667,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "independent_real_data_check": "All203 events/histories/top-five labels of the same two users agreed with a separate per-airing endpoint-sweep oracle",
+  "independent_csv_checks": 22,
+  "designated_kaggle_submission": 57851385,
+  "designated_private_score": "0.41001",
+  "source_code_hashes": {
+    "__init__.py": "f4fc9d89efcc82a3d189649396c3d14022367579e98b61ac2ef64ed3479634c7",
+    "baselines.py": "0849c8950012ad9efb47823d0f2d5c26ffe55d046ded99c7b059039cd5631649",
+    "cache.py": "a6ef9a441fa82df0359d8bff17f3e4ee8e46be7f5dc02ae69506b229219b6057",
+    "cli.py": "833c6f561f72d0fbf3ab8ce17422c40ae47a7d54e2e0233b66c2b0bf25e1997d",
+    "contracts.py": "d242dec34cbbe277f1729f9d0185076c4040681a6a2d995128a2f8b16d6ba527",
+    "data.py": "4a573981a1adbb9fe9df57a443689deabc17b98e488c4dde9cc695c875f84e32",
+    "demo.py": "5d0699494f0898be1bdb1484c9c0da632758e2716c155db3aaf9b329271a730d",
+    "evaluation.py": "e676e10af9b5909f91da0282a0b884d20a791e565ad6492ef27a03bc4f352d94",
+    "models/__init__.py": "ea3f51944d05be0f2eb32c28a89c343a0896ab19dd47d5157f88deff4a3779eb",
+    "models/association.py": "c46ef71c5ad0da4cd3ecf0b4435ead64159c481c2ca8261a023dd05bb3fb1eff",
+    "models/cbf.py": "6ec63d316c172aa2b833b1bc75e452b14a20a1607b1933f564439613e1fd57a6",
+    "models/mf.py": "9f718fb5c85db30cf36bf28d502935eef751533412b900bdfc07a9b0f19d8bab",
+    "models/ppr.py": "eccc19a05966433925d422a3a09a19edc6ad2dbd2c5bedfa94270f3414b92bc5",
+    "pipeline.py": "0e4c82417d29a7c3bb0fa0dea5f66b57a49c1b797aa7795ccc9cc698ec401f83",
+    "submission.py": "34dbee94ec50eee8b8efb7c0d0826d6f7253df5f609a33105a6ee4207905da69"
+  },
+  "human_verification_completed": false,
+  "score_screenshot_supplied": false,
+  "lms_submission_confirmed": false
+}

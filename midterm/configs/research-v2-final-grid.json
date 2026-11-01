@@ -1,0 +1,13 @@
+[
+  {
+    "name": "raw_day_h56_p1", "class": "research_v2.raw_habits:RawScheduleModel",
+    "parameters": {"half_life_days": 56, "slot_mode": "day", "coverage_power": 1}
+  },
+  {
+    "name": "raw_legacy_w05", "class": "research_v2.fusion:EvidenceBlendModel",
+    "parameters": {"components": [
+      {"name": "raw", "class": "research_v2.raw_habits:RawScheduleModel", "weight": 1, "parameters": {"half_life_days": 56, "slot_mode": "day"}},
+      {"name": "legacy", "class": "research_v2.legacy:LegacyHybrid", "weight": 0.5}
+    ]}
+  }
+]

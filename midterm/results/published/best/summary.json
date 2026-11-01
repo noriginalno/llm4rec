@@ -1,0 +1,78 @@
+{
+  "method": "raw_legacy_w05",
+  "kaggle_submission_ref": 57853036,
+  "account": "dkiad4",
+  "private_score": "0.43462",
+  "public_score": "0.44743",
+  "score_evidence": "Saved authenticated returned-score/byte-equality receipt; no new Kaggle call",
+  "scored_csv": "submissions/research-v2/submission_raw_legacy_w05.csv",
+  "sha256": "7af8fe8fc6ce156d7783d621058a0657d9ab02aa95fa071bfc3df44764d19477",
+  "bytes": 75534,
+  "users": 1260,
+  "raw_expert": {
+    "slot_minutes": 30,
+    "slot_mode": "day",
+    "half_life_days": 56,
+    "coverage_power": 1,
+    "lookback_days": null
+  },
+  "outer_fusion": {
+    "mode": "rank",
+    "rank_constant": 60,
+    "depth": 200,
+    "weights": {
+      "raw": 1,
+      "legacy": 0.5
+    }
+  },
+  "legacy_weights": {
+    "repeat": 1,
+    "cbf": 0.5,
+    "association": 0.5,
+    "mf": 0.5,
+    "ppr": 0.5
+  },
+  "local_comparisons": [
+    {
+      "fold": "development",
+      "strict_five_users": 1039,
+      "all_users": 1260,
+      "legacy_strict_map_at_5": 0.42801732435033685,
+      "selected_strict_map_at_5": 0.4563330125120308,
+      "legacy_all_user_map_at_5": 0.38642658730158735,
+      "selected_all_user_map_at_5": 0.41124184303350975
+    },
+    {
+      "fold": "late_development",
+      "strict_five_users": 677,
+      "all_users": 1260,
+      "legacy_strict_map_at_5": 0.3721565731166913,
+      "selected_strict_map_at_5": 0.4076021664204825,
+      "legacy_all_user_map_at_5": 0.25203813932980595,
+      "selected_all_user_map_at_5": 0.27331525573192245
+    },
+    {
+      "fold": "confirmation",
+      "strict_five_users": 1046,
+      "all_users": 1260,
+      "legacy_strict_map_at_5": 0.3548215423836839,
+      "selected_strict_map_at_5": 0.3809400892288082,
+      "legacy_all_user_map_at_5": 0.3231439594356261,
+      "selected_all_user_map_at_5": 0.3467819664902998
+    },
+    {
+      "fold": "primary12",
+      "strict_five_users": 1199,
+      "all_users": 1260,
+      "legacy_strict_map_at_5": 0.4003947734222964,
+      "selected_strict_map_at_5": 0.43615234917987217,
+      "legacy_all_user_map_at_5": 0.3867557319223986,
+      "selected_all_user_map_at_5": 0.4207314814814815
+    }
+  ],
+  "validation_caveat": "Adaptively reused overlapping historical periods; not independent or untouched test estimates. Local metrics are not Kaggle scores.",
+  "refit_caveat": "Exact scored bytes are fixed; separate raw refits had differing feature byte hashes, so universal byte-identical refitting is not claimed.",
+  "publication_checks": "verification.json",
+  "total_historical_approved_uploads": 4,
+  "new_kaggle_uploads_for_publication": 0
+}

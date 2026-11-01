@@ -1,0 +1,44 @@
+[
+  {
+    "name": "raw_legacy_w025", "class": "research_v2.fusion:EvidenceBlendModel",
+    "parameters": {"components": [
+      {"name": "raw", "class": "research_v2.raw_habits:RawScheduleModel", "weight": 1, "parameters": {"half_life_days": 56, "slot_mode": "day"}},
+      {"name": "legacy", "class": "research_v2.legacy:LegacyHybrid", "weight": 0.25}
+    ]}
+  },
+  {
+    "name": "raw_legacy_w05", "class": "research_v2.fusion:EvidenceBlendModel",
+    "parameters": {"components": [
+      {"name": "raw", "class": "research_v2.raw_habits:RawScheduleModel", "weight": 1, "parameters": {"half_life_days": 56, "slot_mode": "day"}},
+      {"name": "legacy", "class": "research_v2.legacy:LegacyHybrid", "weight": 0.5}
+    ]}
+  },
+  {
+    "name": "raw_legacy_w1", "class": "research_v2.fusion:EvidenceBlendModel",
+    "parameters": {"components": [
+      {"name": "raw", "class": "research_v2.raw_habits:RawScheduleModel", "weight": 1, "parameters": {"half_life_days": 56, "slot_mode": "day"}},
+      {"name": "legacy", "class": "research_v2.legacy:LegacyHybrid", "weight": 1}
+    ]}
+  },
+  {
+    "name": "raw_repeat_w025", "class": "research_v2.fusion:EvidenceBlendModel",
+    "parameters": {"components": [
+      {"name": "raw", "class": "research_v2.raw_habits:RawScheduleModel", "weight": 1, "parameters": {"half_life_days": 56, "slot_mode": "day"}},
+      {"name": "repeat", "class": "research_v2.temporal:TemporalRepeatModel", "weight": 0.25, "parameters": {"half_life_days": null}}
+    ]}
+  },
+  {
+    "name": "raw_repeat_w05", "class": "research_v2.fusion:EvidenceBlendModel",
+    "parameters": {"components": [
+      {"name": "raw", "class": "research_v2.raw_habits:RawScheduleModel", "weight": 1, "parameters": {"half_life_days": 56, "slot_mode": "day"}},
+      {"name": "repeat", "class": "research_v2.temporal:TemporalRepeatModel", "weight": 0.5, "parameters": {"half_life_days": null}}
+    ]}
+  },
+  {
+    "name": "raw_repeat_w1", "class": "research_v2.fusion:EvidenceBlendModel",
+    "parameters": {"components": [
+      {"name": "raw", "class": "research_v2.raw_habits:RawScheduleModel", "weight": 1, "parameters": {"half_life_days": 56, "slot_mode": "day"}},
+      {"name": "repeat", "class": "research_v2.temporal:TemporalRepeatModel", "weight": 1, "parameters": {"half_life_days": null}}
+    ]}
+  }
+]

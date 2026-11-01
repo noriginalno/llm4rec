@@ -1,0 +1,56 @@
+{
+  "competition": "sweettv-tv-program-recommender",
+  "kaggle_account": "dkiad4",
+  "approved_candidate_count": 3,
+  "records": {
+    "hybrid_balanced": {
+      "submission_ref": 57851385,
+      "status": "COMPLETE",
+      "public_score": "0.40590",
+      "private_score": "0.41001",
+      "description": "Копытов Даниил | dkiad4 | midterm | hybrid_balanced | official-run-001 | SHA256 6dd285833c5602b699ab2e0d510ac75acb49addc410de59916bb859359107d79",
+      "remote_filename": "submission_hybrid_balanced.csv",
+      "submission_date_as_returned": "2026-10-31 21:47:25.747000",
+      "source_file": "results/official-run-001/final/submission_hybrid_balanced.csv",
+      "bytes": 75989,
+      "sha256": "6dd285833c5602b699ab2e0d510ac75acb49addc410de59916bb859359107d79"
+    },
+    "ppr": {
+      "submission_ref": 57851387,
+      "status": "COMPLETE",
+      "public_score": "0.39637",
+      "private_score": "0.38258",
+      "description": "Копытов Даниил | dkiad4 | midterm | Personalized PageRank | official-run-001",
+      "remote_filename": "submission_ppr.csv",
+      "submission_date_as_returned": "2026-10-31 21:47:25.947000",
+      "source_file": "results/official-run-001/final/submission_ppr.csv",
+      "bytes": 75456,
+      "sha256": "e03a88556c75c7a4e1e1bff2f01f4bb3f3df51ac0dc7baeb77473650082be402"
+    },
+    "repeat": {
+      "submission_ref": 57851386,
+      "status": "COMPLETE",
+      "public_score": "0.39756",
+      "private_score": "0.38950",
+      "description": "Копытов Даниил | dkiad4 | midterm | personal-repeat baseline | official-run-001",
+      "remote_filename": "submission_repeat.csv",
+      "submission_date_as_returned": "2026-10-31 21:47:25.757000",
+      "source_file": "results/official-run-001/final/submission_repeat.csv",
+      "bytes": 75748,
+      "sha256": "d2668a2cf5f8f51c993dc3e20acb2899cd1e3947fc75904eb111c5b2a7f24753"
+    }
+  },
+  "designated_final_method": "hybrid_balanced",
+  "designated_final_submission_ref": 57851385,
+  "designated_final_private_score": "0.41001",
+  "designated_final_file": "submissions/submission.csv",
+  "final_validation": {
+    "valid": true,
+    "rows": 1260,
+    "sha256": "6dd285833c5602b699ab2e0d510ac75acb49addc410de59916bb859359107d79"
+  },
+  "selection_policy": "Highest returned private score among exactly three user-approved, preplanned candidates; no retraining or weight tuning from returned scores",
+  "screenshot_supplied": false,
+  "personal_verification_completed": false,
+  "lms_submission_confirmed": false
+}

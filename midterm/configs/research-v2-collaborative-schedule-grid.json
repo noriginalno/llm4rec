@@ -1,0 +1,16 @@
+[
+  {"name": "ease_raw_l100", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 100, "transform": "raw"}},
+  {"name": "ease_raw_l1000", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 1000, "transform": "raw"}},
+  {"name": "ease_raw_l10000", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 10000, "transform": "raw"}},
+  {"name": "ease_log_l10", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 10, "transform": "log"}},
+  {"name": "ease_log_l100", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 100, "transform": "log"}},
+  {"name": "ease_log_l1000", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 1000, "transform": "log"}},
+  {"name": "ease_binary_l100", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 100, "transform": "binary"}},
+  {"name": "ease_raw_l1000_h56", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 1000, "transform": "raw", "half_life_days": 56}},
+  {"name": "ease_raw_l10_row_l2", "class": "research_v2.collaborative:EASEModel", "parameters": {"regularization": 10, "transform": "raw", "row_l2": true}},
+  {"name": "schedule_channel_h56", "class": "research_v2.schedule:ChannelScheduleModel", "parameters": {"slot_mode": "channel", "half_life_days": 56, "programme_blend": 0.5}},
+  {"name": "schedule_hour_h56", "class": "research_v2.schedule:ChannelScheduleModel", "parameters": {"slot_mode": "hour", "half_life_days": 56, "programme_blend": 0.5}},
+  {"name": "schedule_weekhour_h56", "class": "research_v2.schedule:ChannelScheduleModel", "parameters": {"slot_mode": "weekhour", "half_life_days": 56, "programme_blend": 0.5}},
+  {"name": "schedule_weekhour_plain", "class": "research_v2.schedule:ChannelScheduleModel", "parameters": {"slot_mode": "weekhour", "half_life_days": null, "programme_blend": 0.5}},
+  {"name": "schedule_weekhour_h56_no_repeat", "class": "research_v2.schedule:ChannelScheduleModel", "parameters": {"slot_mode": "weekhour", "half_life_days": 56, "programme_blend": 0}}
+]

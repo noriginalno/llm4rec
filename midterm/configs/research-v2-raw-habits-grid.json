@@ -1,0 +1,7 @@
+[
+  {"name": "raw_week_h28_p1", "class": "research_v2.raw_habits:RawScheduleModel", "parameters": {"half_life_days": 28, "slot_mode": "week", "coverage_power": 1}},
+  {"name": "raw_week_h56_p1", "class": "research_v2.raw_habits:RawScheduleModel", "parameters": {"half_life_days": 56, "slot_mode": "week", "coverage_power": 1}},
+  {"name": "raw_week_plain_p1", "class": "research_v2.raw_habits:RawScheduleModel", "parameters": {"half_life_days": null, "slot_mode": "week", "coverage_power": 1}},
+  {"name": "raw_week_h56_p2", "class": "research_v2.raw_habits:RawScheduleModel", "parameters": {"half_life_days": 56, "slot_mode": "week", "coverage_power": 2}},
+  {"name": "raw_day_h56_p1", "class": "research_v2.raw_habits:RawScheduleModel", "parameters": {"half_life_days": 56, "slot_mode": "day", "coverage_power": 1}}
+]

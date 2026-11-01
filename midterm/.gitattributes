@@ -1,0 +1,2 @@
+# Scored submission files must retain exact uploaded bytes on every checkout.
+submissions/*.csv -text

@@ -1,0 +1,9 @@
+numpy>=2.0,<3
+scipy>=1.14,<2
+scikit-learn>=1.6,<2
+duckdb>=1.2,<2
+pyarrow>=18,<25
+implicit==0.7.3
+kaggle==2.2.5
+pytest>=8,<10
+matplotlib>=3.9,<4

@@ -1,0 +1,19 @@
+{
+  "source_reconciliation": "Strict source scans confirm log wall-clock dates 2020-03-09 through 2020-07-26; EPG files cover ISO weeks 11-20, 21-30 and 31-42 with boundary-crossing airings. Each fold applies its documented fully-contained label policy.",
+  "clock_policy": "Timezone-unknown common naive wall clock, anchored to UTC only for integer coordinates; these are not claimed observed UTC timestamps.",
+  "development": {
+    "train_end": 1586131200,
+    "forecast_start": 1586131200,
+    "forecast_end": 1588550400
+  },
+  "primary": {
+    "train_end": 1588550400,
+    "forecast_start": 1588550400,
+    "forecast_end": 1595808000
+  },
+  "final": {
+    "train_end": 1595808000,
+    "forecast_start": 1595808000,
+    "forecast_end": 1603065600
+  }
+}
