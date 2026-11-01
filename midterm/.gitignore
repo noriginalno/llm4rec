@@ -17,3 +17,10 @@ report/*.log
 report/*.out
 report/*.toc
 report/*.synctex.gz
+/report/
+/delivery/
+/research_v3/
+/research_v4/
+/results/research-v2/
+/results/research-v3/
+/results/research-v4/

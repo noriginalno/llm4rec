@@ -1,0 +1,16 @@
+[
+  {"name": "legacy_hybrid", "class": "research_v2.legacy:LegacyHybrid", "parameters": {}},
+  {"name": "repeat_plain", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": null, "prior_power": 0}},
+  {"name": "repeat_h7", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 7, "prior_power": 0}},
+  {"name": "repeat_h14", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 14, "prior_power": 0}},
+  {"name": "repeat_h28", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 28, "prior_power": 0}},
+  {"name": "repeat_h56", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 56, "prior_power": 0}},
+  {"name": "repeat_h84", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 84, "prior_power": 0}},
+  {"name": "repeat_h186", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 186.3770231703515, "prior_power": 0}},
+  {"name": "repeat_window28", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": null, "lookback_days": 28, "prior_power": 0}},
+  {"name": "repeat_window56", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": null, "lookback_days": 56, "prior_power": 0}},
+  {"name": "public_history_prior", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 186.3770231703515, "prior_basis": "history", "prior_transform": "log10"}},
+  {"name": "history_log1p_h186", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 186.3770231703515, "prior_basis": "history"}},
+  {"name": "history_log1p_h56", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 56, "prior_basis": "history"}},
+  {"name": "forecast_log1p_h56", "class": "research_v2.priors:AiringPriorRepeatModel", "parameters": {"half_life_days": 56, "prior_basis": "forecast"}}
+]

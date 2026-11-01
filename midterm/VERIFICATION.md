@@ -1,5 +1,27 @@
 # Verification status
 
+## Current best publication snapshot
+
+Best actual returned score: **private 0.43462 / public 0.44743**, submission 57853036,
+`raw_legacy_w05`. Its source dependencies match the recorded final-fit source
+hashes, and its exact scored CSV is retained at
+`submissions/research-v2/submission_raw_legacy_w05.csv` (SHA-256
+`7af8fe8fc6ce156d7783d621058a0657d9ab02aa95fa071bfc3df44764d19477`).
+The saved upload receipt records byte equality with the authenticated
+server-returned file. It is historical evidence, not a new authenticated query.
+
+This snapshot contains the original methods plus the completed round-two source,
+tests, reproduction tools and frozen best configuration. Later research rounds,
+raw data, model caches, private transcripts and report drafts are excluded.
+The publication-specific test and exact-CSV checks are recorded in
+`results/published/best/verification.json`. These tests are computational checks,
+not human personal verification or an untouched-test evaluation.
+
+The code/CSV publication is separately authorized by the user's current request.
+A genuine score screenshot is available in the private course package; genuine
+personal verification and oversized/multisession-log delivery agreement remain
+open. Earlier statements below describe the original 0.41001 checkpoint.
+
 ## Established locally
 
 Four independent Python model implementations are present. Authors challenged
@@ -8,7 +30,7 @@ challenge reports and adversarial tests are preserved; additive author responses
 record reproductions, fixes, and rechecks. A separate agent reviewed shared
 reconstruction, ranking, metrics, output integrity and integration.
 
-The current final implementation record is
+The historical original implementation record is
 `results/verification-2026-11-01-final/verification.json` (earlier checkpoints
 are retained separately):
 
@@ -65,7 +87,7 @@ files/hashes; an authenticated download of the actual scored57851385 file is
 byte-identical to `submissions/submission.csv`, SHA-256
 `6dd285833c5602b699ab2e0d510ac75acb49addc410de59916bb859359107d79`.
 
-## Outstanding course-delivery items
+## Historical original-checkpoint delivery notes
 
 - The original source timezone and organizer fragment/conflict/tie equivalence
   remain uncertain. Historical8-vs-final20-week training mismatch is disclosed.

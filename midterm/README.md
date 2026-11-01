@@ -1,13 +1,22 @@
 # SWEET.TV: four independent Python recommendation models
 
-**Outcome:** all four models ran on the official data and produced validated
-Top-5 files for all **1,260 target users**. The designated hybrid submission
-**57851385** returned **private MAP@5 0.41001** (public 0.40590).
-Its exact CSV is [`submissions/submission.csv`](submissions/submission.csv),
-SHA-256 `6dd285833c5602b699ab2e0d510ac75acb49addc410de59916bb859359107d79`.
-The user approved exactly three submissions; no retraining used their scores.
-Personal verification and the required score screenshot remain outstanding,
-so the separate course report is a draft, not a submission-ready package.
+**Best verified solution:** `raw_legacy_w05`, submission **57853036**, returned
+**private MAP@5 0.43462 / public 0.44743** for all **1,260 target users**.
+The exact scored CSV is
+[`submissions/research-v2/submission_raw_legacy_w05.csv`](submissions/research-v2/submission_raw_legacy_w05.csv),
+SHA-256 `7af8fe8fc6ce156d7783d621058a0657d9ab02aa95fa071bfc3df44764d19477`.
+See the [best-solution implementation and reproduction guide](research_v2/README.md)
+and [compact result record](results/published/best/summary.json).
+
+The selected model combines raw channel/time occupancy with the original hybrid
+using evidence-only RRF60, depth 200 and weights 1:0.5. Four approved uploads occurred:
+three original candidates plus one separately approved fixed file. Publishing
+this implementation makes no new Kaggle submission. The original scored CSV
+[`submissions/submission.csv`](submissions/submission.csv), private 0.41001, is
+preserved rather than overwritten. Raw data, private AI logs and report drafts
+are excluded. The private course package still needs genuine personal
+verification and agreement on oversized-log delivery; a real score screenshot
+has been supplied separately.
 
 The four independent implementations are content-based filtering, directed
 association rules, implicit-feedback ALS, and Personalized PageRank. Popularity
@@ -25,23 +34,28 @@ each other and switch author/challenger roles; reports and reproductions live in
 | Association rules | 0.278913 |
 | Implicit MF | 0.201760 |
 | Personalized PageRank | 0.395179 |
-| Hybrid | **0.400395** |
+| Original hybrid | 0.400395 |
+| Raw channel/time habits | 0.426931 |
+| Selected raw-aware hybrid | **0.436152** |
 
 All methods use the same **1,199** strict-five-label validation users; diagnostics
 also include all 1,260 template users. The descriptive paired-user 95% interval
 for hybrid minus PPR is **[-0.002994,+0.013320]**: the point estimate is higher,
 but this does not establish a statistically decisive or independent-test gain.
 Reversing the unspecified fifth-label ID tie-break leaves the hybrid highest;
-absolute scores change. Primary validation selected the final method.
+absolute scores change. This original comparison predates the raw-aware extension.
+The extension's local historical selection and limitations are documented in
+[`research_v2/README.md`](research_v2/README.md); local MAP is not a Kaggle score.
 
 | Approved Kaggle candidate | Submission | Public | Private |
 |---|---:|---:|---:|
 | Hybrid | 57851385 | 0.40590 | **0.41001** |
 | PPR | 57851387 | 0.39637 | 0.38258 |
 | Personal repeat | 57851386 | 0.39756 | 0.38950 |
+| Selected raw-aware hybrid | 57853036 | 0.44743 | **0.43462** |
 
-The returned-score choice among these three was explicitly authorized for course
-designation. It is not an unbiased estimate after selection or evidence of
+The original three and the later fixed-file fourth upload were separately
+authorized. Choosing among returned scores is not an unbiased estimate or evidence of
 business impact. Full local runs are under `results/official-run-001/`; the
 public snapshot contains small summaries and exact final-fit CSVs in
 `submissions/`, not restricted raw data or private AI-session exports.
@@ -247,7 +261,9 @@ The course requires a PDF (<=5 pages excluding references), GitHub code and the
 exact scored CSV, the actual highest returned private-score screenshot for the
 designated final submission, and an original unmodified native AI-session export.
 A genuine user-performed check must be documented, not invented by an agent.
-No final report or submission-ready status is claimed while these are missing.
+The current best code and scored CSV are included here; the report, screenshot,
+and native transcripts remain in the private local delivery package. No LMS
+submission or completed personal verification is claimed.
 
 Kaggle uploads, Git commits/pushes, and publication need separate approval.
 Use your real Russian full name and Kaggle name in the submission description,

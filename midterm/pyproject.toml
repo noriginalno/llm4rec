@@ -9,7 +9,7 @@ description = "Temporal, repeat-aware TV program recommendation benchmark"
 requires-python = ">=3.11"
 
 [tool.setuptools.packages.find]
-include = ["sweettv*"]
+include = ["sweettv*", "research_v2*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

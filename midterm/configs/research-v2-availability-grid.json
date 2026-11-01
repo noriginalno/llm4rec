@@ -1,0 +1,10 @@
+[
+  {"name": "availability_plain_p025", "class": "research_v2.temporal:ScheduleAdjustedRepeatModel", "parameters": {"half_life_days": null, "schedule_power": 0.25}},
+  {"name": "availability_plain_p05", "class": "research_v2.temporal:ScheduleAdjustedRepeatModel", "parameters": {"half_life_days": null, "schedule_power": 0.5}},
+  {"name": "availability_plain_p1", "class": "research_v2.temporal:ScheduleAdjustedRepeatModel", "parameters": {"half_life_days": null, "schedule_power": 1}},
+  {"name": "availability_h56_p025", "class": "research_v2.temporal:ScheduleAdjustedRepeatModel", "parameters": {"half_life_days": 56, "schedule_power": 0.25}},
+  {"name": "availability_h56_p05", "class": "research_v2.temporal:ScheduleAdjustedRepeatModel", "parameters": {"half_life_days": 56, "schedule_power": 0.5}},
+  {"name": "availability_h56_p1", "class": "research_v2.temporal:ScheduleAdjustedRepeatModel", "parameters": {"half_life_days": 56, "schedule_power": 1}},
+  {"name": "availability_h28_p05", "class": "research_v2.temporal:ScheduleAdjustedRepeatModel", "parameters": {"half_life_days": 28, "schedule_power": 0.5}},
+  {"name": "availability_h56_p05_s100", "class": "research_v2.temporal:ScheduleAdjustedRepeatModel", "parameters": {"half_life_days": 56, "schedule_power": 0.5, "smoothing_airings": 100}}
+]
